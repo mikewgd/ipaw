@@ -1,13 +1,5 @@
 import styled, { createGlobalStyle, css } from 'styled-components';
-
-const headerStyles = css`
-  font-family: 'Times New Roman', Times, serif;
-  font-style: italic;
-  font-weight: normal;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-`;
+import { Button } from './button';
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -15,48 +7,46 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 16px;
-  }
-
-  a {
-    &,
-    &:active,
-    &:visited {
-      color: #666;
-    }
-
-    &:hover {
-      color: #999;
-    }
+    background: #000;
+    color: #fff;
+    overflow: hidden;
   }
 `;
 
-export const H1 = styled.h1`
-  ${headerStyles};
+export const Container = styled.div`
+  display: grid;
+  overflow: hidden;
+  height: 100%;
 `;
 
-export const H2 = styled.h2`
-  ${headerStyles};
-  margin: 0 0 20px 0;
-	text-shadow: 0px 4px 0px rgba(206,189,132, .5);
+export const Overlay = styled.div`
+  position: absolute;
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 1;
+  display: grid;
+  transform: translateX(${props => (props.show ? '0%' : '100%')});
+  transition: transform 0.25s ease-in;
+  ${'' /* opacity: ${props => (props.show ? 1 : 0)}; */}
 `;
 
-export const Paragraph = styled.p`
-  font-size: 12px;
-	line-height: 18px;
-  margin: ${props => props.margin || "10px 0"};
-  ${props => props.maxWidth && css`
-    max-width: ${props.maxWidth};
-  `}
+export const Choices = styled.div`
+  align-self: center;
+  text-align: center;
+  display: grid;
 
-  ${props => props.textAlign && css`
-    text-align: ${props.textAlign};
-  `}
-`;
+  ${Button} {
+    ${props =>
+      props.onlyOne &&
+      css`
+        grid-column: 1 / span 2;
+      `};
+  }
 
-export const Main = styled.main``;
-
-export const Wrapper = styled.div`
-  margin: 0 auto;
-  max-width: 600px;
-  padding: 0 30px;
+  @media (orientation: landscape) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 20px;
+  }
 `;
