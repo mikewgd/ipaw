@@ -31,7 +31,7 @@ export const Game = ({ show = false }: Props) => {
           <Choice
             bgColor="#1040d2"
             delay="1s"
-            onClick={() => {
+            onTouchStart={() => {
               dispatch({ type: 'UPDATE_YES_COUNT' });
               soundYes.play();
             }}
@@ -43,7 +43,7 @@ export const Game = ({ show = false }: Props) => {
           <Choice
             bgColor="#f1e42d"
             delay="1.5s"
-            onClick={() => {
+            onTouchStart={() => {
               dispatch({ type: 'UPDATE_NO_COUNT' });
               soundNo.play();
             }}
@@ -52,7 +52,7 @@ export const Game = ({ show = false }: Props) => {
           </Choice>
         )}
 
-        <EndButton bgColor="#000" onClick={endSession}>
+        <EndButton bgColor="#000" onTouchStart={endSession}>
           <span>END SESSION</span>
         </EndButton>
       </Choices>

@@ -14,21 +14,23 @@ export const StartSession = ({ show }) => {
           bgColor="#f1e42d"
           both
           delay="1s"
-          onClick={() => dispatch({ type: 'UPDATE_GAME', payload: 'yesno' })}
+          onTouchStart={() =>
+            dispatch({ type: 'UPDATE_GAME', payload: 'yesno' })
+          }
         >
           <span>YES or NO</span>
         </GameButton>
         <GameButton
           bgColor="#1040d2"
           delay="1.5s"
-          onClick={() => dispatch({ type: 'UPDATE_GAME', payload: 'yes' })}
+          onTouchStart={() => dispatch({ type: 'UPDATE_GAME', payload: 'yes' })}
         >
           <span>YES</span>
         </GameButton>
         <GameButton
           bgColor="#f1e42d"
           delay="2s"
-          onClick={() => dispatch({ type: 'UPDATE_GAME', payload: 'no' })}
+          onTouchStart={() => dispatch({ type: 'UPDATE_GAME', payload: 'no' })}
         >
           <span>NO</span>
         </GameButton>
