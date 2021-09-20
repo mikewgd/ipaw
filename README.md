@@ -1,4 +1,4 @@
-# pearllevy
+# iPAW
 A lawyer website for my dad.
 
 ## Technologies
